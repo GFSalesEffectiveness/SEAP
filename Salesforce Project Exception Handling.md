@@ -11,6 +11,7 @@ Handling Exception is writing a code to gracefully recover from an error.
 
  How To Catch Exeption!
  Method 1:
+ 
 			try{
 			 update accounts;
 			} catch (DMLException e){
@@ -22,6 +23,7 @@ Handling Exception is writing a code to gracefully recover from an error.
 			}
 
  Method 2:
+ 
 			Database.SaveResult[] lsr = Database.update(accounts, false); 
             			for(Database.SaveResult sr : lsr){ 
             			if (!sr.isSuccess()) { 
