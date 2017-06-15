@@ -42,10 +42,10 @@ Handling Exception is writing a code to gracefully recover from an error.
 ```
 -  ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.FATAL,'my error msg');
 			ApexPages.addMessage(myMsg);
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-```sh
+
+
 # Send An Email :-
-```
+
 -  try{
 			 update account;
 			} catch (DMLException e){
