@@ -1,17 +1,17 @@
-# Exception Handling
+Exception Handling
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+
 Handling Exception is writing a code to gracefully recover from an error. 
 	You "try" to run your code. If there is an exception, you "catch" it and can run some code, then you can "finally" run some code whether you had an exception or not.
 
   - How to catch Exception
   - How to show Exception message
   - How to handle Exception in Lightnig Component
- [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-# How To Catch Exeption!
-# Method 1:
-  - try{
+
+ How To Catch Exeption!
+ Method 1:
+			try{
 			 update accounts;
 			} catch (DMLException e){
 			 for (Account account : accounts) {
@@ -21,32 +21,31 @@ Handling Exception is writing a code to gracefully recover from an error.
 			 inProgress = false;
 			}
 
-# Method 2:
- -   Database.SaveResult[] lsr = Database.update(accounts, false); 
+ Method 2:
+			Database.SaveResult[] lsr = Database.update(accounts, false); 
             			for(Database.SaveResult sr : lsr){ 
             			if (!sr.isSuccess()) { 
             				myMethodToaddToErrorObjectList(sr);
             			}
 			} 
- -      myMethodToaddToErrorObjectList(SObject account)
+			myMethodToaddToErrorObjectList(SObject account)
 			{
 				for (Account account : accounts) {
 				account.addError('There was a problem updating the accounts');
 												 }		
 			}
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-# How To Display or Notify Exception  / Error Message !
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-```sh
-# On a visualforce page :-
-```
--  ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.FATAL,'my error msg');
+
+How To Display or Notify Exception  / Error Message !
+
+
+ On a visualforce page :-
+
+			ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.FATAL,'my error msg');
 			ApexPages.addMessage(myMsg);
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-```sh
-# Send An Email :-
-```
-try{
+
+ Send An Email :-
+
+			try{
 			 update account;
 			} catch (DMLException e){
 			 ApexPages.addMessages(e);
@@ -59,11 +58,10 @@ try{
 			 mail.setPlainTextBody(e.getMessage());
 			 Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
 			}
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-```sh
-# Logging in a custom object :-
-```
--   try{
+
+ Logging in a custom object :-
+
+			try{
 			 throw new MyException('something bad happened!');
 			} catch (MyException e){
 			 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.FATAL,'my error msg');
@@ -77,11 +75,10 @@ try{
 				 Database.insert(newErrorRecord,false);
 			 }
 			}
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-```sh
-# Displaying in a Lightning Component :-
-```
-- ({
+
+ Displaying in a Lightning Component :-
+
+			({
 			throwErrorForKicks: function(cmp) {
 				// this sample always throws an error to demo try/catch
 				var hasPerm = false;
@@ -123,11 +120,10 @@ try{
 				}
 			}
 			})
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-```sh
-# Custom Exception From Server Apex to Client Side
-```
--  public with sharing class SimpleErrorController {
+
+Custom Exception From Server Apex to Client Side
+
+			public with sharing class SimpleErrorController {
 			static final List<String> NAUGHTY_WORDS = new List<String> {
 				'naughty',
 				'words'
